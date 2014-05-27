@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+      
+      <h:head>
+      	<title>Hello Page!</title>
+      </h:head>
+      
+      <h:body>
+	      <h:form>
+	        <h:dataTable value="#{allEmployeesPageBean.allEmployees}" 
+	       				 var="employee"
+	       				 binding="#{allEmployeesPageBean.dataTable}">
+	        	<h:column>
+	        		<f:facet name="header">First Name</f:facet>
+	        		<f:facet name="footer">First Name</f:facet>
+	        		<h:commandLink action="#{allEmployeesPageBean.showEmployee}">
+	        			#{employee.firstName}
+	        		</h:commandLink>
+	        	</h:column>
+	        	<h:column>
+	        		<f:facet name="header">Surname</f:facet>
+	        		<f:facet name="footer">Surname</f:facet>
+	        		#{employee.surname}
+	        	</h:column>
+	        	<h:column>
+	        		<f:facet name="header">Job Role</f:facet>
+	        		<f:facet name="footer">Job Role</f:facet>
+	        		#{employee.jobRole}
+	        	</h:column>
+	        	<h:column>
+	        		<f:facet name="header">Salary</f:facet>
+	        		<f:facet name="footer">Salary</f:facet>
+	        		#{employee.salary}
+	        	</h:column>
+	        </h:dataTable>
+	      </h:form>
+      </h:body>
+</html>

@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+      
+      <h:head>
+      	<title>Hello Page!</title>
+      </h:head>
+      
+      <h:body>
+	      <h1>Employee Detail for #{allEmployeesPageBean.selectedEmployee.firstName}</h1>
+	      <p>Surname: #{allEmployeesPageBean.selectedEmployee.surname}</p>
+	      <p>Job Role: #{allEmployeesPageBean.selectedEmployee.jobRole}</p>
+	      <p>Salary: $#{allEmployeesPageBean.selectedEmployee.salary}</p>
+      </h:body>
+      
+</html>

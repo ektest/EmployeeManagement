@@ -1,0 +1,28 @@
+<entity-mappings
+	xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.1">
+	<entity class="com.emre.staffmanagement.domain.Employee">
+		<named-query name="searchByFirstName">
+			<query>
+				SELECT employee FROM Employee employee WHERE employee.firstName = :name
+			</query>
+		</named-query>
+	</entity>
+	
+	<entity class="com.emre.staffmanagement.domain.Employee">
+		<named-query name="getAllEmployeeRecords">
+			<query>
+				SELECT employee FROM Employee employee
+			</query>
+		</named-query>
+	</entity>
+	
+	<entity class="com.emre.staffmanagement.domain.Employee">
+		<named-query name="searchBySurname">
+			<query>
+				SELECT employee FROM Employee employee WHERE employee.surname = :surname
+			</query>
+		</named-query>
+	</entity>
+</entity-mappings>
