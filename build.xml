@@ -101,8 +101,8 @@
       	  <lib dir="${lib}"/>
 	      <fileset dir="${html}"/>  <!-- html files -->	
 	   	  <!-- The following block is commented out, until 
-	   	       the chapter on security. Please leave it until then! -->
-	   	  <!--
+	   	       the security implementation. Please leave it until then! -->
+	   	  <!-- I will come back this
 	   	  <webinf dir="${src}/META-INF">
 	   		 <include name="sun-ejb-jar.xml"/> 				
 	      </webinf>
