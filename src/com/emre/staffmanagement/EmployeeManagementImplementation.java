@@ -8,6 +8,7 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.jws.WebService;
 
 import com.emre.staffmanagement.dao.EmployeeDataAccess;
 import com.emre.staffmanagement.domain.Employee;
@@ -17,7 +18,11 @@ import com.emre.staffmanagement.domain.Employee;
 // Transaction is not needed for this method (no db call) 
 // By default for all methods
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
-// This has 2 EJB implemantation (Remote and Local ones)
+// Below one for WebService. This class will be our WebService
+@WebService (name="employeeManagementWebService")
+// http://localhost:8080/EmployeeManagementImplementationService/employeeManagementWebService?wsdl
+// http://localhost:8080/EmployeeManagementImplementationService/employeeManagementWebService?Tester
+// This has 2 EJB implementation (Remote and Local ones)
 public class EmployeeManagementImplementation 
 	implements EmployeeManagementServiceRemote, EmployeeManagementServiceLocal {
 	// Dependency Injection
