@@ -12,9 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="Employee")
+@XmlRootElement
 public class Employee implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

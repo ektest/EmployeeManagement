@@ -18,4 +18,22 @@
       <param-name>javax.faces.PROJECT_STAGE</param-name>
       <param-value>Development</param-value>
    </context-param>
+
+   <!-- Configuration for JAX-RS -->
+   <servlet>
+   	  <servlet-name>Jersey Web Application</servlet-name>
+   	  <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+   	
+   	  <init-param>
+   	     <param-name>com.sun.jersey.config.property.packages</param-name>
+   	     <param-value>com.virtualpairprogrammers.staffmanagement.rest</param-value>
+      </init-param>
+
+	  <load-on-startup>1</load-on-startup>   	   	
+   </servlet>
+   
+   <servlet-mapping>
+      <servlet-name>Jersey Web Application</servlet-name>
+      <url-pattern>/webservice/*</url-pattern>
+   </servlet-mapping>
 </web-app>
