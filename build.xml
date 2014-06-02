@@ -80,9 +80,10 @@
 		       <include name="orm.xml"/>
 		   </metainf>
 	   </jar>
+	   <!--
 	   <copy file="${jarfile}" 
 	         tofile="/Users/ekoca/apps/glassfish3/glassfish/domains/domain1/autodeploy/EmployeeManagement.jar"/>
-		
+	   -->
 	</target>
 
 	<target name="war" depends="compile" 
@@ -114,6 +115,9 @@
        <ear destfile="${dist}/fullapplication.ear" appxml="application.xml">
          <fileset dir="${dist}" includes="*.jar,*.war"/>
        </ear>
-	</target>
+	   <copy file="${warfile}" 
+        	 tofile="/Users/ekoca/apps/glassfish3/glassfish/domains/domain1/autodeploy/webapp.war"/>
+</target>
+
 
 </project>
