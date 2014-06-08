@@ -10,10 +10,12 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.emre.staffmanagement.EmployeeManagementServiceLocal;
 import com.emre.staffmanagement.SystemUnavaliableException;
+import com.emre.staffmanagement.dao.EmployeeNotFoundException;
 import com.emre.staffmanagement.domain.Employee;
 
 @Path("/employees")
@@ -31,21 +33,25 @@ public class EmployeeResource {
 	@GET
 	@Produces("application/xml")
 	@Path("{id}")
-	public Employee findEmployeeById(@PathParam("id") String id){
-		return new Employee("A", "B", "Trainer", 100000);
-		//return employeeManagement.registerEmployee(new Employee("Test", "Testing", "Tester", 10000));
+	public Employee getEmployeeById(@PathParam("id") int id){
+		try {
+			return employeeManagement.getEmployeeById(id);
+		} catch (EmployeeNotFoundException e) {
+			// return 404
+			return null;
+		}
 	}
 
 	@POST
 	@Produces("application/xml")
 	@Consumes("application/xml")
-	public Employee registerEmployee(Employee newEmployee){
+	public Response registerEmployee(Employee newEmployee){
 		try {
 			employeeManagement.registerEmployee(newEmployee);
 		} catch (SystemUnavaliableException e) {
-			// TODO Auto-generated catch block
-			return null;
+			// 503 Service Unavailable 
+			return Response.status(Status.SERVICE_UNAVAILABLE).build();
 		}
-		return newEmployee;
+		return Response.ok().entity(newEmployee).build();
 	}
 }

@@ -25,4 +25,12 @@
 			</query>
 		</named-query>
 	</entity>
+	
+	<entity class="com.emre.staffmanagement.domain.Employee">
+		<named-query name="searchById">
+			<query>
+				SELECT employee FROM Employee employee WHERE employee.id = :id
+			</query>
+		</named-query>
+	</entity>
 </entity-mappings>

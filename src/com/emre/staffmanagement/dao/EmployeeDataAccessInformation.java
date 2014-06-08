@@ -34,6 +34,28 @@ public class EmployeeDataAccessInformation implements EmployeeDataAccess {
 		return results;
 	}
 
-	
+	@Override
+	public Employee findById(int id) throws EmployeeNotFoundException{
+		/*
+		Employee result = (Employee) em.createNamedQuery("searchById")
+				.setParameter("id", id)
+				.getSingleResult();
+		*/
+		// or
+		Employee result = em.find(Employee.class, id);
+		
+		if(result == null){
+			throw new EmployeeNotFoundException();
+		}
+		return result;
+	}
 
+	@Override
+	public void deleteById(int id) throws EmployeeNotFoundException {
+		
+		Employee result = findById(id);
+		//or
+						//em.find(Employee.class, id);
+		em.remove(result);
+	}
 }

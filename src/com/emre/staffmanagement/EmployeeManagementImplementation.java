@@ -8,10 +8,10 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import com.emre.staffmanagement.dao.EmployeeDataAccess;
+import com.emre.staffmanagement.dao.EmployeeNotFoundException;
 import com.emre.staffmanagement.domain.Employee;
 
 @Stateless
@@ -73,6 +73,16 @@ public class EmployeeManagementImplementation
 	public double dummy()
 	{
 		return 1.1;
+	}
+
+	@Override
+	public Employee getEmployeeById(int id) throws EmployeeNotFoundException {
+		return dao.findById(id);
+	}
+
+	@Override
+	public void deleteEmployeeById(int id) throws EmployeeNotFoundException {
+		dao.deleteById(id);
 	}
 
 }

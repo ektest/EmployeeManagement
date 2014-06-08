@@ -6,9 +6,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-
 import com.emre.staffmanagement.EmployeeManagementServiceRemote;
 import com.emre.staffmanagement.SystemUnavaliableException;
+import com.emre.staffmanagement.dao.EmployeeNotFoundException;
 import com.emre.staffmanagement.domain.Employee;
 
 public class ClientApplicationTest {
@@ -43,9 +43,28 @@ public class ClientApplicationTest {
 			
 			// Chapter 11 : Rollback!
 			try {
+				System.out.println("Chapter 11 : Rollback!");
 				service.rollbackCheckedException(new Employee("AA","BB","CC",10000));
 			} catch (SystemUnavaliableException e) {
-				System.out.println("Exception");
+				System.out.println("Exception: " + e);
+			}
+
+			// Chapter 19
+			try {
+				System.out.println("Chapter 19");
+				Employee foundEmployee = service.getEmployeeById(51);
+				System.out.println(foundEmployee);
+				foundEmployee = service.getEmployeeById(1151);
+				System.out.println(foundEmployee);
+			} catch (EmployeeNotFoundException e){
+				System.out.println("Exception: " + e);
+			}
+
+			try {	
+				service.deleteEmployeeById(401);
+				System.out.println("Employee has been deleted!");
+			} catch (EmployeeNotFoundException e){
+				System.out.println("Exception: " + e);
 			}
 
 		} catch (NamingException e) {

@@ -12,4 +12,8 @@ public interface EmployeeDataAccess {
 	public void insert (Employee newEmployee);
 	public List<Employee> findAll();
 	public List<Employee> findBySurname (String surname);
+	public Employee findById (int id)
+			throws EmployeeNotFoundException;
+	public void deleteById(int id)
+			throws EmployeeNotFoundException;
 }
