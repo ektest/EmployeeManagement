@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -40,6 +41,18 @@ public class EmployeeResource {
 			// return 404
 			return null;
 		}
+	}
+
+	@DELETE
+	@Path("{id}")
+	public Response deleteEmployeeById(@PathParam("id") int id){
+		try {
+			employeeManagement.deleteEmployeeById(id);
+		} catch (EmployeeNotFoundException e) {
+			// return 404
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		return Response.ok().build();
 	}
 
 	@POST

@@ -61,7 +61,7 @@ public class ClientApplicationTest {
 			}
 
 			try {	
-				service.deleteEmployeeById(401);
+				service.deleteEmployeeById(705);
 				System.out.println("Employee has been deleted!");
 			} catch (EmployeeNotFoundException e){
 				System.out.println("Exception: " + e);
