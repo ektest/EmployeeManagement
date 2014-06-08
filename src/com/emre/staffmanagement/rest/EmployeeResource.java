@@ -11,6 +11,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -26,13 +27,13 @@ public class EmployeeResource {
 	private EmployeeManagementServiceLocal employeeManagement;
 
 	@GET
-	@Produces("application/xml")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<Employee> getAllEmployees() {
 		return employeeManagement.getAllEmployees();
 	}
 
 	@GET
-	@Produces("application/xml")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("{id}")
 	public Employee getEmployeeById(@PathParam("id") int id){
 		try {
@@ -56,8 +57,8 @@ public class EmployeeResource {
 	}
 
 	@POST
-	@Produces("application/xml")
-	@Consumes("application/xml")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response registerEmployee(Employee newEmployee){
 		try {
 			employeeManagement.registerEmployee(newEmployee);
